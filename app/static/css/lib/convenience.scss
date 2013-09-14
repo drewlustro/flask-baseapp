@@ -1,0 +1,22 @@
+
+/*------------------------------------*\
+    $GENERATED CONVENIENCE CLASSES
+\*------------------------------------*/
+
+$properties: padding margin;
+$directions: top right bottom left;
+
+@each $prop in $properties {
+    @each $direct in $directions {
+        @for $i from 0 through 8 {
+            .#{$prop}-#{$direct}-#{($i * 5)} { 
+                #{$prop}-#{$direct}: #{($i * 5)}px;
+            }
+        }    
+    }
+}
+
+.text-left { text-align: left }
+.text-center { text-align: center }
+.text-right { text-align: right }
+

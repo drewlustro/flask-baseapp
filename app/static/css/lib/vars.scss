@@ -1,0 +1,74 @@
+/*  vars.scss
+    Standard layout variables and sizing
+*/
+@import 'bourbon/bourbon';
+
+/* Base Sizing */
+$base_font_percent: 62.5%;
+$base_font_size: em(14); 
+$base_line_height: 1.481;
+$base_background_color: #f3f3f3;
+$base_margin: 1rem; 
+$base_padding: 1rem;
+
+/* Greyscale Colors */
+$black: #2b2b2b;
+$black_true: #000;
+$white: #fbfbfb;
+$white_true: #fff;
+$grey_5: darken($white, 5%);
+$grey_10: darken($white, 10%);
+$grey_15: darken($white, 15%);
+$grey_20: darken($white, 20%);
+$grey_30: darken($white, 30%);
+$grey_40: darken($white, 40%);
+$grey_50: darken($white, 50%);
+$grey_60: darken($white, 60%);
+$grey_70: darken($white, 70%);
+$grey_80: darken($white, 80%);
+$grey_90: darken($white, 90%);
+
+/* Saturated Colors */
+$red_medium: #c0392b;
+$grass_medium: #27ae60;
+$aqua_medium: #3498db;
+$rust_medium: #d35400;
+$violet_medium: #8e44ad;
+$seafoam_medium: #1abc9c;
+$clay_red_dull: #e67e22;
+$ocean_deep_blue: #2980b9;
+$teal_medium: #2ecc71;
+
+/* Theme Colors */
+$key_color: $grass_medium;
+$alt_color: desaturate(adjust-hue($key_color, 120deg), 48%);
+
+
+/* Headers */
+$h1_base_size: 2.8rem;
+$h2_base_size: 2.4rem;
+$h3_base_size: 2.0rem;
+$h4_base_size: 1.5rem;
+$h5_base_size: 1.2rem;
+$h6_base_size: 0.8rem;
+
+/* Text */
+
+
+/* Fonts */
+$whitney: "Whitney SSm A", "Whitney SSm B", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
+$inconsolata: "inconsolata", "Courier New", Courier, sans-serif;
+$bernio_sans: "jaf-bernino-sans-condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$proxima_nova: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$basic_gothic: "ff-basic-gothic-web-pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$meta_serif: "ff-meta-serif-web-pro", Georgia, sans-serif;
+$source_sans: "source-sans-pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/* Families */
+$base_font_family: $whitney;
+$header_font_family: $whitney;
+$meta_font_family: $whitney;
+
+
+

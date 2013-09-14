@@ -1,0 +1,81 @@
+
+/**********************************
+*** MIXINS
+**********************************/
+
+@mixin text-shadow-white($size: 1px, $opacity: 0.9) {
+    text-shadow: 0 $size 0 rgba(255,255,255, $opacity);
+}
+
+@mixin text-shadow-black($size: 1px, $opacity: 0.8) {
+    text-shadow: 0 $size 0 rgba(0,0,0, $opacity);
+}
+
+@mixin hover-active-focus($property, $value) {
+    &:hover, &:active, &:focus {
+        #{$property}: $value;
+    }
+}
+
+@mixin vendorize($property, $value) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    -ms-#{$property}: $value;
+    -o-#{$property}: $value;
+    #{$property}: $value;
+}
+
+@mixin clear {
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+@mixin block-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@mixin list-reset {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+@mixin scale-header-sizes($scale: 1) {
+    html {
+        font-size: $base_font_percent * $scale;
+    }
+    body {
+        line-height: $base_line_height * $scale;
+    }
+}
+
+
+@mixin box-emboss($opacity: 0.8, $opacity2: 0.05) {
+    box-shadow: white($opacity) 0 1px 0, inset black($opacity2) 0 1px 0;
+}
+
+@mixin responsive-embed-wrapper($aspect_ratio: 65.25%) {
+    position: relative;
+    padding-bottom: $aspect_ratio;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+
+    iframe, object, embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}

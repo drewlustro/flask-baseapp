@@ -55,6 +55,28 @@ def signup():
     return render_template("default/signup.html", form=form)
 
 
+@controller.route('/img/<name>.<ext>')
+def img(name, ext):
+    mimetype = "image/png"
+    if ext == "jpg" or ext == "jpeg":
+        mimetype = "image/jpeg"
+    elif ext == "gif":
+        mimetype = "image/gif"
+    return send_from_directory(os.path.join(application.root_path, 'img'),
+                               name + '.' + ext, mimetype=mimetype)
+
+@controller.route('/fonts/<name>.<ext>')
+def fonts(name, ext):
+    return send_from_directory(os.path.join(application.root_path, 'fonts'),
+                               name + '.' + ext)
+
+
+@controller.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(application.root_path, 'static'),
+                               'favicon.ico', mimetype='image/x-icon')
+
+
 @controller.route("/logout")
 def logout():
     session.pop("user_id", None)
