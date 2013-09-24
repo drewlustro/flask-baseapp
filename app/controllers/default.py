@@ -1,9 +1,10 @@
 from flask import Blueprint, render_template, g, session, flash,\
-    redirect, url_for, request
+    redirect, url_for, request, send_from_directory
 from app.models import User
 from app.forms import LoginForm, SignupForm
 from app.lib import filters
-
+import os
+from app import application
 
 controller = Blueprint("default", __name__, url_prefix="")
 

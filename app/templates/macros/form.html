@@ -1,29 +1,30 @@
 {%- macro quick_form(form, action='', method='POST', submit='Submit') -%}
-    <form method="{{ method }}" action="{{ action }}" class="form-vertical">
-    {{ form.hidden_tag() }}
-    <fieldset>
-        <div class="">
-            {% for field in form if not (field.type == 'HiddenField' or field.type == 'CSRFTokenField')%}
-                <div class="control-group {{ 'error' if field.errors else '' }}">
-                    <div class="controls">
-                        {{ field(placeholder=field.name.capitalize(), class='input-large', id=field.name) }}
-                        {% if field.errors %}
-                        <span class="help-inline">
-                            {% for error in field.errors %}
+    <form method="{{ method }}" action=" {{ action }}" class="form-horizontal" role="form">
+        {{ form.hidden_tag() }}
+        <fieldset>
+        {% for field in form if not (field.type == 'HiddenField' or field.type == 'CSRFTokenField')%}
+            <div class="form-group {{ 'has-error' if field.errors else '' }}">
+                <label class="col-lg-2" for="{{ field.name }}">{{ field.name.capitalize() }}</label>
+                <div class="col-lg-4">
+                    {{ field(placeholder=field.name.capitalize(), id=field.name, class="form-control") }}
+                    {% if field.errors %}
+                        <p class="help-block">
+                        {% for error in field.errors %}
                             {{ error }}
-                            {% endfor %}
-                            <span>
-                        {% endif %}
-                    </div>
+                        {% endfor %}
+                        </p>
+                    {% endif %}
                 </div>
-            {% endfor %}
-            {%- if next -%}
-                <input type='hidden' name='next' value='{{ next }}' />
-            {%- endif -%}
-        </div>
-        <div>
-            <button type="submit" class="btn btn-primary">{{ submit }}</button>
-        </div>
-    </fieldset>
-</form>
+            </div>
+        {% endfor %}
+        {%- if next -%}
+            <input type='hidden' name='next' value='{{ next }}' />
+        {%- endif -%}
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <button type="submit" class="btn btn-default">{{ submit }}</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 {%- endmacro -%}

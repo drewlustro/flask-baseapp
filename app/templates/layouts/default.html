@@ -5,8 +5,8 @@
         <!-- Bootstrap -->
         <link href="/static/css/vendor/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/static/css/site.css" rel="stylesheet" media="screen">
-        <script src="/static/scripts/jquery-2.0.3.min"></script>
-        <script src="/static/jquery-2.0.3.min/bootstrap.min.js"></script>
+        <script src="/static/scripts/jquery-2.0.3.min.js"></script>
+        <script src="/static/scripts/bootstrap.min.js"></script>
         {%- block head -%}
         {%- endblock -%}
 
@@ -22,51 +22,43 @@
         <meta property="og:image" content="{% block og_image %}{% endblock %}" />
     </head>
     <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="/">Base Application</a>
-                    <div class="nav-collapse collapse">
-                        <ul class='nav'>
-                            {%- if g.user -%}
-                                {%- block nav -%}{%- endblock -%}
-                            {%- endif -%}
+                    <a class="navbar-brand" href="/">Base Application</a>
+                        {%- if g.user -%}
+                        <ul class="nav navbar-nav">
+                            {%- block usernav -%}{%- endblock -%}
                         </ul>
-                        <ul class='nav pull-right'>
+                        {%- endif -%}
+                        <ul class="nav navbar-nav navbar-right">
                             {%- if g.user -%}
-                                <li><a href="{{ url_for('default.logout') }}">Log out</a></li>
+                                <li><a href="{{ url_for('default.logout') }}">Log Out</a></li>
                             {%- else -%}
-                                <li><a href="{{ url_for('default.login') }}">Log in</a></li>
-                                <li><a href="{{ url_for('default.signup') }}">Sign up</a></li>
+                                <li><a href="{{ url_for('default.login') }}">Log In</a></li>
+                                <li><a href="{{ url_for('default.signup') }}">Sign Up</a></li>
                             {%- endif -%}
                         </ul>
-                    </div><!--/.nav-collapse -->
+                    
                 </div>
             </div>
-        </div>
+        </nav>
 
-        <div class="container" id='main'>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <div id="flash-messages" class="row">
-                        <div class="alert-box block-center">
-                            <div class='alert'>
-                                {% for message in messages %}
-                                <div>{{ message|safe }}</div>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endwith %}
-
+        <section id="main" class="main">
+            {% include 'components/_flash_messages.html' %}
             {%- block content -%}
             {%- endblock -%}
-        </div> <!-- /container -->
+        </section>
 
         <footer>
-            <div class='container'>
-                &copy; 2013 Drew Lustro
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-content">
+                            &copy; 2013 Drew Lustro
+                        </div>
+                    </div>
+                </div>
             </div>
         </footer>
     </body>

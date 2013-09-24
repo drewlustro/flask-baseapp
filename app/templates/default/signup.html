@@ -1,11 +1,14 @@
 {%- from 'macros/form.html' import quick_form -%}
 {%- extends "layouts/default.html" -%}
 {%- block content -%}
-<h2>Sign up</h2>
-{{ quick_form(form, method='POST', action=url_for('.signup'), submit="Sign up") }}
-<script type='text/javascript'>
-    $(document).on('ready', function() {
-        $('#email').focus();
-    });
-</script>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Sign Up</h1>
+            <br><br>
+            {{ quick_form(form, method='POST', action=url_for('.signup'), submit="Sign Up") }}
+        </div>
+    </div>
+</div>
+
 {%- endblock -%}
